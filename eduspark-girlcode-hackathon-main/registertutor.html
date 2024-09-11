@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - EduSpark</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #281741;
+        color: white;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .header {
+        background-color: #612dae;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header img {
+        height: 50px;
+        mix-blend-mode: multiply;
+      }
+      .header nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .header nav a:hover {
+        text-decoration: underline;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #281741;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropdown-content a:hover {
+        background-color: #612dae;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .dropdown:hover .dropbtn {
+        text-decoration: underline;
+      }
+      .form-container {
+        max-width: 400px;
+        background-color: #612dae;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .form-container h1 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .form-container form label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .form-container form input[type="text"],
+      .form-container form input[type="email"],
+      .form-container form input[type="password"],
+      .form-container form input[type="date"],
+      .form-container form input[type="number"],
+      .form-container form select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+      .form-container form button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        background-color: purple;
+        color: white;
+        font-size: 16px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+      .form-container form button:hover {
+        background-color: darkmagenta;
+      }
+      .form-container p {
+        font-size: 14px;
+      }
+      .form-container p button {
+        background: none;
+        border: none;
+        color:white;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .form-container p button:hover {
+        color: white;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #612dae;
+      }
+      .footer .social-links {
+        margin-bottom: 10px;
+      }
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .social-links img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img src="images/new logo.jpeg" alt="EduSpark Logo" />
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="tutorprofiles.html">Tutor Profiles</a>
+        <a href="studentdashboard.html">Student Dashboard</a>
+        <a href="support&contact.html">Support & Contact</a>
+        <div class="dropdown">
+          <span class="dropbtn">☰</span>
+          <div class="dropdown-content">
+            <a href="home.html">Home</a>
+            <a href="tutorprofiles.html">Tutor Profiles</a>
+            <a href="studentdashboard.html">Student Dashboard</a>
+            <a href="support&contact.html">Support & Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="form-container">
+      <div>
+        <h1>Create Tutor Account</h1>
+        <p>
+          Already Registered?
+          <button
+            type="button"
+            onclick="window.location.href='tutorlogin.html'"
+          >
+            LOG IN HERE!
+          </button>
+        </p>
+        <form id="registrationForm">
+          <label>
+            Name:
+            <input type="text" name="name" id="name" required />
+          </label>
+          <label>
+            Email:
+            <input type="email" name="email" id="email" required />
+          </label>
+          <label>
+            Password:
+            <input type="password" name="password" id="password" required />
+          </label>
+          <label>
+            Confirm Password:
+            <input
+              type="password"
+              name="confirm_password"
+              id="confirm_password"
+              required
+            />
+          </label>
+          <label>
+            Phone Number:
+            <input type="text" name="phone" id="phone" required />
+          </label>
+          <label>
+            Qualification:
+            <select name="qualification" id="qualification" required>
+              <option value="" disabled selected>
+                Select your qualification
+              </option>
+              <option value="high-school">High School</option>
+              <option value="associate-degree">Associate Degree</option>
+              <option value="bachelors-degree">Bachelor's Degree</option>
+              <option value="masters-degree">Master's Degree</option>
+              <option value="phd">PhD</option>
+            </select>
+          </label>
+          <label>
+            Qualification Name:
+            <input
+              type="text"
+              name="qualification-name"
+              id="qualification-name"
+              required
+            />
+          </label>
+          <label>
+            Certificate Number:
+            <input
+              type="text"
+              name="certificate-number"
+              id="certificate-number"
+              required
+            />
+          </label>
+          <label>
+            Experience (in years):
+            <input
+              type="number"
+              name="experience"
+              id="experience"
+              required
+              min="0"
+              step="1"
+            />
+          </label>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="social-links">
+        <a href="#"><img src="images/email_542689.png" alt="Email" /></a>
+        <a href="#"><img src="images/ig icon.jpg" alt="Instagram" /></a>
+        <a href="#"><img src="images/fb icon.jpg" alt="Facebook" /></a>
+      </div>
+      <a href="#">Terms of Service</a>
+      <p>COPYRIGHT &copy; | 2024 | EDUSPARK</p>
+    </div>
+
+    <script>
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var name = document.getElementById("name").value;
+          var email = document.getElementById("email").value;
+          var password = document.getElementById("password").value;
+          var confirmPassword =
+            document.getElementById("confirm_password").value;
+
+          // Basic validation
+          if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+          }
+
+          // Simulate saving data
+          var registeredUsers =
+            JSON.parse(localStorage.getItem("registeredUsers")) || [];
+          var userExists = registeredUsers.some((user) => user.email === email);
+
+          if (userExists) {
+            alert("User already registered with this email.");
+          } else {
+            registeredUsers.push({
+              name: name,
+              email: email,
+              password: password,
+              phone: document.getElementById("phone").value,
+              qualification: document.getElementById("qualification").value,
+              qualificationName:
+                document.getElementById("qualification-name").value,
+              certificateNumber:
+                document.getElementById("certificate-number").value,
+              experience: document.getElementById("experience").value,
+            });
+            localStorage.setItem(
+              "registeredUsers",
+              JSON.stringify(registeredUsers)
+            );
+            alert("Registration successful!");
+
+            // Redirect to tutor dashboard or any other page
+            window.location.href = "tutordashboard.html";
+          }
+        });
+    </script>
+  </body>
+</html>

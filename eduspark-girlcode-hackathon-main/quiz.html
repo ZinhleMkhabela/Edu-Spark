@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EduSpark aims to ensure inclusive and equitable quality education and promote lifelong learning opportunities for all." />
+  <meta name="keywords" content="education, lifelong learning, inclusive education, SDG 4" />
+  <title>Quiz App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .header {
+      background-color: #612dae;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header img {
+      height: 50px;
+      mix-blend-mode: multiply;
+    }
+    .header nav {
+      display: flex;
+      align-items: center;
+    }
+    .header nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .header nav a:hover {
+      text-decoration: underline;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #281741;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #612dae;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown:hover .dropbtn {
+      text-decoration: underline;
+    }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #612dae;
+      color: white;
+      margin-top: auto;
+    }
+    .footer .social-links {
+      margin-bottom: 10px;
+    }
+    .footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .social-links img {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      flex: 1;
+    }
+    .hidden {
+      display: none;
+    }
+    .visible {
+      display: block;
+    }
+    .quiz-btn {
+      background-color: #281741;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .quiz-btn:hover {
+      background-color: #281741;
+    }
+    .start-quiz-btn {
+      margin-top: 20px;
+    }
+    #resultSection {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="images/new logo.jpeg" alt="EduSpark Logo" />
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="tutorprofiles.html">Tutor Profiles</a>
+      <a href="studentdashboard.html">Student Dashboard</a>
+      <a href="support&contact.html">Support & Contact</a>
+      <div class="dropdown">
+        <span class="dropbtn">☰</span>
+        <div class="dropdown-content">
+          <a href="home.html">Home</a>
+          <a href="tutorprofiles.html">Tutor Profiles</a>
+          <a href="studentdashboard.html">Student Dashboard</a>
+          <a href="support&contact.html">Support & Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Lesson Section -->
+    <div id="lessonSection" class="visible">
+      <h1>Lesson: Basics of Algebra</h1>
+      <p>
+        Algebra is a branch of mathematics dealing with symbols and the rules
+        for manipulating those symbols. In algebra, those symbols (today
+        written as Latin and Greek letters) represent quantities without fixed
+        values, known as variables.
+      </p>
+      <p>
+        For example, in the equation <strong>x + 2 = 5</strong>, x is a
+        variable that can be solved by subtracting 2 from both sides.
+      </p>
+      <button onclick="startQuiz()" class="quiz-btn start-quiz-btn">Start Quiz</button>
+    </div>
+
+    <!-- Quiz Section -->
+    <div id="quizSection" class="hidden">
+      <div id="question1">
+        <h2>Question 1: What is 2 + 1?</h2>
+        <input type="radio" name="q1" value="2"> 2<br>
+        <input type="radio" name="q1" value="3"> 3<br>
+        <input type="radio" name="q1" value="4"> 4<br>
+      </div>
+
+      <div id="question2" class="hidden">
+        <h2>Question 2: What is 2 + 2?</h2>
+        <input type="radio" name="q2" value="3"> 3<br>
+        <input type="radio" name="q2" value="4"> 4<br>
+        <input type="radio" name="q2" value="5"> 5<br>
+      </div>
+
+      <button id="prevButton" class="hidden quiz-btn" onclick="prevQuestion()">Previous</button>
+      <button id="nextButton" class="quiz-btn" onclick="nextQuestion()">Next</button>
+      <button id="submitButton" class="hidden quiz-btn" onclick="submitQuiz()">Submit</button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="resultSection" class="hidden">
+      <h2>Quiz Results</h2>
+      <p id="scoreDisplay"></p>
+      <button onclick="retakeQuiz()" class="quiz-btn">Retake Quiz</button>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <div class="social-links">
+      <a href="#"><img src="images/email_542689.png" alt="Email" /></a>
+      <a href="#"><img src="images/ig icon.jpg" alt="Instagram" /></a>
+      <a href="#"><img src="images/fb icon.jpg" alt="Facebook" /></a>
+    </div>
+    <a href="#">Terms of Service</a>
+    <p>COPYRIGHT &copy; 2024 EDU-Spark</p>
+  </div>
+
+  <script>
+    let currentQuestion = 1;
+    const totalQuestions = 2;
+
+    function startQuiz() {
+      document.getElementById("lessonSection").classList.add("hidden");
+      document.getElementById("quizSection").classList.remove("hidden");
+      document.querySelector('.start-quiz-btn').classList.add("hidden"); // Hide the start button
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < totalQuestions) {
+        document.getElementById(`question${currentQuestion}`).classList.add("hidden");
+        currentQuestion++;
+        document.getElementById(`question${currentQuestion}`).classList.remove("hidden");
+        if (currentQuestion === totalQuestions) {
+          document.getElementById("nextButton").classList.add("hidden");
+          document.getElementById("submitButton").classList.remove("hidden");
+        }
+        if (currentQuestion > 1) {
+          document.getElementById("prevButton").classList.remove("hidden");
+        }
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 1) {
+        document.getElementById(`question${currentQuestion}`).classList.add("hidden");
+        currentQuestion--;
+        document.getElementById(`question${currentQuestion}`).classList.remove("hidden");
+        if (currentQuestion < totalQuestions) {
+          document.getElementById("nextButton").classList.remove("hidden");
+          document.getElementById("submitButton").classList.add("hidden");
+        }
+        if (currentQuestion === 1) {
+          document.getElementById("prevButton").classList.add("hidden");
+        }
+      }
+    }
+
+    function submitQuiz() {
+      document.getElementById("quizSection").classList.add("hidden");
+      document.getElementById("resultSection").classList.remove("hidden");
+
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === '3') {
+        score++;
+      }
+      if (document.querySelector('input[name="q2"]:checked')?.value === '4') {
+        score++;
+      }
+
+      document.getElementById("scoreDisplay").textContent = `Your score is ${score} out of ${totalQuestions}.`;
+    }
+
+    function retakeQuiz() {
+      currentQuestion = 1;
+      document.getElementById("resultSection").classList.add("hidden");
+      document.getElementById("quizSection").classList.remove("hidden");
+      document.getElementById("nextButton").classList.remove("hidden");
+      document.getElementById("submitButton").classList.add("hidden");
+      document.getElementById("prevButton").classList.add("hidden");
+      document.getElementById("question1").classList.remove("hidden");
+      document.getElementById("question2").classList.add("hidden");
+    }
+  </script>
+</body>
+</html>

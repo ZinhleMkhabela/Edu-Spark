@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduSpark Tutor Profiles</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #281741;
+        color: white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .header {
+        background-color: #612dae;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header img {
+        height: 50px;
+        mix-blend-mode: multiply;
+      }
+
+      .header nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      .header nav a:hover {
+        text-decoration: underline;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #281741;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #612dae;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        text-decoration: underline;
+      }
+
+      .search-bar {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .search-bar input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .search-bar button {
+        padding: 10px 20px;
+        background-color: #612dae;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .search-bar button:hover {
+        background-color: #4a1d85;
+      }
+
+      .tutor-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 20px 0;
+      }
+
+      .tutor-card {
+        background-color: #612dae;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 30%;
+        margin: 10px;
+        box-sizing: border-box;
+      }
+
+      .tutor-card img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+      }
+
+      .tutor-card h3 {
+        margin: 10px 0;
+      }
+
+      .tutor-card p {
+        margin: 5px 0;
+      }
+
+      .tutor-card button {
+        background-color: white;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .tutor-card button:hover {
+        background-color: #612dae;
+        color: white;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: auto;
+        padding: 10px;
+        background-color: #612dae;
+      }
+
+      .footer .social-links {
+        margin-bottom: 10px;
+      }
+
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      .social-links img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+      }
+
+      .confirmation-message {
+        text-align: center;
+        background-color: #612dae;
+        color: white;
+        padding: 10px;
+        margin: 10px auto;
+        width: 50%;
+        border-radius: 5px;
+        display: none; /* Initially hide the confirmation message */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img src="images/new logo.jpeg" alt="EduSpark Logo" />
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="tutorprofiles.html">Tutor Profiles</a>
+        <a href="studentdashboard.html">Student Dashboard</a>
+        <a href="support&contact.html">Support & Contact</a>
+        <div class="dropdown">
+          <span class="dropbtn">☰</span>
+          <div class="dropdown-content">
+            <a href="#">Home</a>
+            <a href="#">Tutor Profiles</a>
+            <a href="#">Student Dashboard</a>
+            <a href="#">Support and Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Type Subject/Module" />
+        <button onclick="filterTutors()">SEARCH</button>
+      </div>
+      <div class="tutor-cards">
+        <div class="tutor-card" data-expertise="Accounting, Business Studies">
+          <img src="images/jenny.jpg" alt="Jenny Swart" />
+          <h3>NAME: JENNY SWART</h3>
+          <p>AVAILABILITY: MON, WED, THUR</p>
+          <p>QUALIFICATION: Bachelor OF Commerce</p>
+          <p>EXPERTISE: Accounting & Business Studies</p>
+          <p>RATINGS: Excellent</p>
+          <button onclick="showConfirmation('Jenny Swart')">BOOK A SESSION</button>
+        </div>
+        <div class="tutor-card" data-expertise="Life Science, Physical Science">
+          <img src="images/john.jpg" alt="John Martin" />
+          <h3>NAME: JOHN MARTIN</h3>
+          <p>AVAILABILITY: MON, WED, SAT</p>
+          <p>QUALIFICATION: Bachelor Of Science</p>
+          <p>EXPERTISE: Life Science & Physical Science</p>
+          <p>RATINGS: Excellent</p>
+          <button onclick="showConfirmation('John Martin')">BOOK A SESSION</button>
+        </div>
+        <div class="tutor-card" data-expertise="Computer studies, Web development, Database management">
+          <img src="images/elsa.jpg" alt="Elsa Hapes" />
+          <h3>NAME: ELSA HAPES</h3>
+          <p>AVAILABILITY: MON, THUR, FRI</p>
+          <p>QUALIFICATION: Diploma in Computer Science</p>
+          <p>EXPERTISE: Computer studies, Web development & Database management</p>
+          <p>RATINGS: Excellent</p>
+          <button onclick="showConfirmation('Elsa Hapes')">BOOK A SESSION</button>
+        </div>
+      </div>
+      <!-- Confirmation message area -->
+      <div class="confirmation-message" id="confirmationMessage"></div>
+    </main>
+    <footer class="footer">
+      <div class="social-links">
+        <a href="#"><img src="images/email_542689.png" alt="Email" /></a>
+        <a href="#"><img src="images/ig icon.jpg" alt="Instagram" /></a>
+        <a href="#"><img src="images/fb icon.jpg" alt="Facebook" /></a>
+      </div>
+      <a href="#"> Terms of Service</a>
+      <p>COPYRIGHT&copy; | 2024 | EDUSPARK</p>
+    </footer>
+
+    <script>
+      function showConfirmation(tutorName) {
+        var confirmationMessage = document.getElementById("confirmationMessage");
+        confirmationMessage.textContent = "Booking session with " + tutorName + " confirmed!";
+        confirmationMessage.style.display = "block";
+      }
+
+      function filterTutors() {
+        var input = document.getElementById('searchInput').value.toLowerCase();
+        var tutorCards = document.getElementsByClassName('tutor-card');
+
+        for (var i = 0; i < tutorCards.length; i++) {
+          var expertise = tutorCards[i].getAttribute('data-expertise').toLowerCase();
+          
+          if (expertise.includes(input)) {
+            tutorCards[i].style.display = 'block';
+          } else {
+            tutorCards[i].style.display = 'none';
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - EduSpark</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #281741;
+        color: white;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .header {
+        background-color: #612dae;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header img {
+        height: 50px;
+        mix-blend-mode: multiply;
+      }
+      .header nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .header nav a:hover {
+        text-decoration: underline;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #281741;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropdown-content a:hover {
+        background-color: #612dae;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .dropdown:hover .dropbtn {
+        text-decoration: underline;
+      }
+      .container {
+        max-width: 400px;
+        background-color: #612dae;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container p {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .container form label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .container form input[type="email"],
+      .container form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+      .container form button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        background-color: purple;
+        color: white;
+        font-size: 16px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+      .container form button:hover {
+        background-color: darkmagenta;
+      }
+      .container p a {
+        color: purple;
+        text-decoration: underline;
+      }
+      .container p a:hover {
+        color: darkmagenta;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #612dae;
+      }
+      .footer .social-links {
+        margin-bottom: 10px;
+      }
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .social-links img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img src="images/new logo.jpeg" alt="EduSpark Logo" />
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="tutorprofiles.html">Tutor Profiles</a>
+        <a href="studentdashboard.html">Register Student</a>
+        <a href="support&contact.html">Support & Contact</a>
+        <div class="dropdown">
+          <span class="dropbtn">☰</span>
+          <div class="dropdown-content">
+            <a href="home.html">Home</a>
+            <a href="tutorprofiles.html">Tutor Profiles</a>
+            <a href="studentdashboard.html">Student Dashboard</a>
+            <a href="support&contact.html">Support & Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <form id="loginForm">
+        <p>Login to EduSpark</p>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit">Login</button>
+        <p>
+          Don't have an account? <a href="registerstudent.html">Register here</a>
+        </p>
+      </form>
+    </div>
+
+    <div class="footer">
+      <div class="social-links">
+        <a href="#"><img src="images/email_542689.png" alt="Email" /></a>
+        <a href="#"><img src="images/ig icon.jpg" alt="Instagram" /></a>
+        <a href="#"><img src="images/fb icon.jpg" alt="Facebook" /></a>
+      </div>
+      <a href="#">Terms of Service</a>
+      <p>COPYRIGHT&copy; | 2024 | EDUSPARK</p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loginForm = document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          // Here you can add functionality to authenticate the user
+          console.log("Logging in with", email, password);
+
+          // Simulate login by redirecting to the dashboard page
+          window.location.href = "studentdashboard.html";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard - EduSpark</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #281741;
+        color: white;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .header {
+        background-color: #612dae;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .header img {
+        height: 50px;
+        mix-blend-mode: multiply;
+      }
+      .header nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .header nav a:hover {
+        text-decoration: underline;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #281741;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropdown-content a:hover {
+        background-color: #612dae;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .dropdown:hover .dropbtn {
+        text-decoration: underline;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #612dae;
+        border-radius: 10px;
+      }
+      .container h1 {
+        margin-bottom: 20px;
+      }
+      .container h2 {
+        margin-bottom: 10px;
+      }
+      .session-card {
+        background-color: #612dae;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 300px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #612dae;
+      }
+      .footer .social-links {
+        margin-bottom: 10px;
+      }
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .social-links img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+      }
+      .textbook-card {
+        background-color: #ffffff;
+        color: #281741;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 300px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+      }
+      .textbook-card h3 {
+        margin-top: 0;
+      }
+      .textbook-card p {
+        margin-bottom: 10px;
+      }
+      .textbook-card button {
+        background-color: #612dae;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .textbook-card button:hover {
+        background-color: #451d8e;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img src="images/new logo.jpeg" alt="EduSpark Logo" />
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="tutorprofiles.html">Tutor Profiles</a>
+        <a href="registerstudent.html">Student Dashboard</a>
+        <a href="support&contact.html">Support & Contact</a>
+        <div class="dropdown">
+          <span class="dropbtn">☰</span>
+          <div class="dropdown-content">
+            <a href="home.html">Home</a>
+            <a href="tutorprofiles.html">Tutor Profiles</a>
+            <a href="studentlogin.html">Student Dashboard</a>
+            <a href="support&contact.html">Support & Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Welcome to Your Student Dashboard</h1>
+
+      <!-- Display current sessions and upcoming sessions -->
+      <h2>Upcoming Quizzes</h2>
+      <div id="currentSessions">
+        <!-- Placeholder for current sessions, can be dynamically populated -->
+      </div>
+
+      <h2>Upcoming Sessions</h2>
+      <div id="upcomingSessions">
+        <!-- Placeholder for upcoming sessions, can be dynamically populated -->
+      </div>
+
+      <!-- New section for textbooks -->
+      <h2>Available Textbooks</h2>
+      <div id="textbooks">
+        <!-- Placeholder for textbooks, can be dynamically populated -->
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="social-links">
+        <a href="#"><img src="images/email_542689.png" alt="Email" /></a>
+        <a href="#"><img src="images/ig icon.jpg" alt="Instagram" /></a>
+        <a href="#"><img src="images/fb icon.jpg" alt="Facebook" /></a>
+      </div>
+      <a href="#">Terms of Service</a>
+      <p>COPYRIGHT&copy; | 2024 | EDUSPARK</p>
+    </div>
+
+    <script>
+      // Simulated data for demonstration
+      var currentSessions = [
+        {
+          subject: "Mathematics",
+          tutor: "Zinhle Mkhabela",
+          time: "Today, 10:00 AM",
+        },
+        {
+          subject: "English",
+          tutor: "Lerato Chitaya",
+          time: "Tomorrow, 2:00 PM",
+        },
+      ];
+
+      var upcomingSessions = [
+        {
+          subject: "Physical Sciences",
+          tutor: "Nokwanda Nkasa",
+          time: "July 25, 4:00 PM",
+        },
+        {
+          subject: "History",
+          tutor: "Mashadi Ntshudisane",
+          time: "July 27, 3:00 PM",
+        },
+      ];
+
+      var textbooks = [
+        {
+          title: "Mathematics Grade 12",
+          author: "John Doe",
+          description: "Comprehensive guide to Grade 12 Mathematics.",
+          file: "textbooks/mathematics_grade_12.pdf",
+        },
+        {
+          title: "English Literature",
+          author: "Jane Smith",
+          description: "Analysis of classic and modern English literature.",
+          file: "textbooks/english_literature.pdf",
+        },
+        {
+          title: "Physical Sciences",
+          author: "Dr. Albert Einstein",
+          description: "In-depth understanding of physics and chemistry.",
+          file: "textbooks/physical_sciences.pdf",
+        },
+        {
+          title: "History of South Africa",
+          author: "Prof. Nelson Mandela",
+          description: "A detailed account of South African history.",
+          file: "textbooks/history_of_south_africa.pdf",
+        },
+      ];
+
+      // Function to display sessions in cards
+      function displaySessions(containerId, sessions) {
+        var container = document.getElementById(containerId);
+        container.innerHTML = "";
+        sessions.forEach(function (session) {
+          var card = document.createElement("div");
+          card.classList.add("session-card");
+          card.innerHTML = `
+          <h3>${session.subject}</h3>
+          <p><strong>Tutor:</strong> ${session.tutor}</p>
+          <p><strong>Time:</strong> ${session.time}</p>
+          <button onclick="${
+            containerId === "upcomingSessions"
+              ? `bookSession('${session.subject}', '${session.tutor}')`
+              : "window.location.href='quiz.html'"
+          }">${containerId === "currentSessions" ? "Practice Quiz" : "Book Session"}</button>
+        `;
+          container.appendChild(card);
+        });
+      }
+
+      // Function to display textbooks in cards
+      function displayTextbooks(containerId, textbooks) {
+        var container = document.getElementById(containerId);
+        container.innerHTML = "";
+        textbooks.forEach(function (textbook) {
+          var card = document.createElement("div");
+          card.classList.add("textbook-card");
+          card.innerHTML = `
+          <h3>${textbook.title}</h3>
+          <p><strong>Author:</strong> ${textbook.author}</p>
+          <p>${textbook.description}</p>
+          <button onclick="downloadTextbook('${textbook.file}')">Download</button>
+        `;
+          container.appendChild(card);
+        });
+      }
+
+      // Display sessions and textbooks on page load
+      window.onload = function () {
+        var isLoggedIn = true;
+
+        if (isLoggedIn) {
+          displaySessions("currentSessions", currentSessions);
+          displaySessions("upcomingSessions", upcomingSessions);
+          displayTextbooks("textbooks", textbooks);
+        }
+      };
+
+      // Function to handle downloading a textbook
+      function downloadTextbook(file) {
+        const a = document.createElement("a");
+        a.href = file;
+        a.download = file.split("/").pop();
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      // Function to handle booking a session
+      function bookSession(subject, tutor) {
+        alert(`Booking session with ${tutor} for ${subject} confirmed.`);
+      }
+    </script>
+  </body>
+</html>

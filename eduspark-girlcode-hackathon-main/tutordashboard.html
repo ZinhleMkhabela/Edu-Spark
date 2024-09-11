@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutor Dashboard - EduSpark</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #281741;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      header {
+        background-color: #612dae;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header img {
+        height: 50px;
+        mix-blend-mode: multiply;
+      }
+      header nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      header nav a:hover {
+        text-decoration: underline;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #281741;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropdown-content a:hover {
+        background-color: #612dae;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .container {
+        flex: 1;
+        padding: 20px;
+        background-color: #612dae;
+        border-radius: 10px;
+        margin: 20px;
+        overflow: auto;
+      }
+      .container h1,
+      .container h2 {
+        margin-bottom: 20px;
+      }
+      .session-card,
+      .performance-card {
+        background-color: #281741;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        color: white;
+        width: 300px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+      }
+      .session-card h3,
+      .performance-card h3 {
+        margin: 0 0 10px 0;
+      }
+      .session-card button,
+      .performance-card button {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .session-card button:hover,
+      .performance-card button:hover {
+        background-color: #612dae;
+      }
+      .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #612dae;
+      }
+      .footer .social-links {
+        margin-bottom: 10px;
+      }
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .social-links img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+      }
+      #confirmationMessage {
+        display: none;
+        text-align: center;
+        color: white;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="images/new logo.jpeg" alt="EduSpark Logo" />
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="tutorprofiles.html">Tutor Profiles</a>
+        <a href="studentdashboard.html">Student Dashboard</a>
+        <a href="support&contact.html">Support & Contact</a>
+        <div class="dropdown">
+          <span class="dropbtn">☰</span>
+          <div class="dropdown-content">
+            <a href="home.html">Home</a>
+            <a href="tutorprofiles.html">Tutor Profiles</a>
+            <a href="studentdashboard.html">Student Dashboard</a>
+            <a href="support&contact.html">Support & Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- Confirmation Message -->
+      <div id="confirmationMessage"></div>
+
+      <h1>Welcome to Your Tutor Dashboard</h1>
+
+      <h2>Upcoming Sessions</h2>
+      <div id="upcomingSessions">
+        <div class="session-card">
+          <h3>Mathematics</h3>
+          <p><strong>Student:</strong> Alice Smith</p>
+          <p><strong>Time:</strong> Today, 10:00 AM</p>
+          <button onclick="notifyStudent('Alice Smith')">Notify Alice</button>
+        </div>
+        <div class="session-card">
+          <h3>English</h3>
+          <p><strong>Student:</strong> Bob Johnson</p>
+          <p><strong>Time:</strong> Tomorrow, 2:00 PM</p>
+
+          <button onclick="notifyStudent('Bob Johnson')">Notify Bob</button>
+        </div>
+        <div class="session-card">
+          <h3>Physics</h3>
+          <p><strong>Student:</strong> Catherine Lee</p>
+          <p><strong>Time:</strong> August 5, 11:00 AM</p>
+
+          <button onclick="notifyStudent('Catherine Lee')">
+            Notify Catherine
+          </button>
+        </div>
+      </div>
+
+      <h2>Student Performance</h2>
+      <div id="studentPerformance">
+        <div class="performance-card">
+          <h3>Alice Smith</h3>
+          <p><strong>Grade:</strong> A</p>
+          <p>
+            <strong>Last Session Feedback:</strong> Excellent progress; keep up
+            the good work!
+          </p>
+          <p><strong>Total Sessions:</strong> 12</p>
+          <p><strong>Average Grade:</strong> A</p>
+          <button onclick="notifyStudent('Alice Smith')">Notify Alice</button>
+        </div>
+        <div class="performance-card">
+          <h3>Bob Johnson</h3>
+          <p><strong>Grade:</strong> B</p>
+          <p>
+            <strong>Last Session Feedback:</strong> Needs improvement in
+            assignments; focus on practice.
+          </p>
+          <p><strong>Total Sessions:</strong> 8</p>
+          <p><strong>Average Grade:</strong> B</p>
+          <button onclick="notifyStudent('Bob Johnson')">Notify Bob</button>
+        </div>
+        <div class="performance-card">
+          <h3>Catherine Lee</h3>
+          <p><strong>Grade:</strong> A-</p>
+          <p>
+            <strong>Last Session Feedback:</strong> Strong performance; slight
+            improvement needed in lab reports.
+          </p>
+          <p><strong>Total Sessions:</strong> 10</p>
+          <p><strong>Average Grade:</strong> A-</p>
+          <button onclick="notifyStudent('Catherine Lee')">
+            Notify Catherine
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="social-links">
+        <a href="#"><img src="images/email_542689.png" alt="Email" /></a>
+        <a href="#"><img src="images/ig icon.jpg" alt="Instagram" /></a>
+        <a href="#"><img src="images/fb icon.jpg" alt="Facebook" /></a>
+      </div>
+      <a href="#">Terms of Service</a>
+      <p>&COPY; 2024 EduSpark</p>
+    </div>
+
+    <script>
+      function notifyStudent(studentName) {
+        var confirmationMessage = document.getElementById(
+          "confirmationMessage"
+        );
+        confirmationMessage.textContent = "Notification sent to " + studentName;
+        confirmationMessage.style.display = "block"; // Show the confirmation message
+      }
+    </script>
+  </body>
+</html>
